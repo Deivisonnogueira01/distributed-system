@@ -1,0 +1,14 @@
+@Controller advice 
+
+handlers sao controladores
+que enviam as exceções
+
+
+rest que receba uma requisicao e retorne um erro 
+
+serviço 
+  /sum
+
+  criar uma exceção aritimeticaException e lancar ao informar uma Caracter e nao um
+  numero 
+   

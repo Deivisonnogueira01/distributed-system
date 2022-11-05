@@ -8,18 +8,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.micro.ifms.app.exception.AritmeticaException;
 import com.micro.ifms.app.model.Sum;
 
 
 @RestController
 @RequestMapping(value = "/sum")
-
 public class SumController {
     
     @GetMapping("/{n1}/{n2}")
     public ResponseEntity<Double> add(@PathVariable("n1") Double n1, @PathVariable("n2") Double n2) {
-        Sum new_sum = new Sum(n1, n2);
-        return ResponseEntity.ok(new_sum.getSum());
+        
+        if(n1.toString().contains("") || n2.toString().contains("d")){
+            Sum new_sum = new Sum(n1, n2);
+            return ResponseEntity.ok(new_sum.getSum());
+
+        } else {
+            throw new NumberFormatException("Não é permitido Letras, Tente Novamente");
+        }
+      
+        
+        
+       
     }
 
     @PostMapping
