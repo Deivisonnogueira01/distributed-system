@@ -1,6 +1,6 @@
 package com.micro.ifms.app.exception.handler;
 
-import com.micro.ifms.app.exception.AritmeticaException;
+//import com.micro.ifms.app.exception.AritmeticaException;
 import com.micro.ifms.app.exception.ResponseException;
 
 import org.springframework.http.HttpStatus;
@@ -22,7 +22,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
         return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(NumberFormatException.class)
+    @ExceptionHandler(ArithmeticException.class)
     public final ResponseEntity<ResponseException> handleBadRequestExceptions(Exception ex, WebRequest request) {
         ResponseException exceptionResponse = new ResponseException(ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
